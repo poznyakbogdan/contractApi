@@ -3,10 +3,10 @@
 class ContractApi {
     constructor(provider, period, contractOptions) {
         this.contract = {};
-        this.provider = provider;
+        this.provider = provider || "https://mainnet.infura.io/gIWjuD8y664Biko4Quf8";
         this.contract.abi = contractOptions.abi;
         this.contract.address = contractOptions.address;
-        this.period = period;
+        this.period = period || 10000;
     }
 
     start(callback) {
@@ -23,7 +23,7 @@ class ContractApi {
 
     pinger(callback) {
         let timer = setInterval(() => {
-            this.contractInstance.methods.balanceOf("0x86fa049857e0209aa7d9e616f7eb3b3b78ecfdb0").call(callback);
+            this.contractInstance.methods.hasEnded().call(callback);
         }, this.period);
         return timer;
     }
