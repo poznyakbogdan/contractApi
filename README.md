@@ -4,6 +4,7 @@
 ## Использование:
 ```
 let contractApi = new ContractApi(provider, period, contractOptions);
+contractApi.start(callback);
 ```
 ## Описание параметров конструктора
 - provider(String): провайдер для web3.js через которого происходит обращение к контракту
